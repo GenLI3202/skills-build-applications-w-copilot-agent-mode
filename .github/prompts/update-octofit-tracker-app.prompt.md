@@ -1,5 +1,7 @@
+---
 mode: 'agent'
-model: GPT-4.1
+model: Claude Sonnet 4
+---
 
 # Django App Updates
 
