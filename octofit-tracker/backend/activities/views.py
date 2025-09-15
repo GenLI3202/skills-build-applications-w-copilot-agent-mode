@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import ActivityType, Activity, WorkoutSuggestion
 from .serializers import ActivityTypeSerializer, ActivitySerializer, WorkoutSuggestionSerializer
 
-
+# ViewSets for Activities app
 class ActivityTypeViewSet(viewsets.ModelViewSet):
     """ViewSet for ActivityType model"""
     queryset = ActivityType.objects.all()

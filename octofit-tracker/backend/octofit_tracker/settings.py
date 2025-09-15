@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'leaderboards',
 ]
 
+# Middleware
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
