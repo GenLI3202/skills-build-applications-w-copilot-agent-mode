@@ -24,24 +24,25 @@ import os
 # Create router for API endpoints
 router = DefaultRouter()
 
-# Import viewsets when they're created
-# from users.views import UserViewSet, UserProfileViewSet
-# from activities.views import ActivityTypeViewSet, ActivityViewSet, WorkoutSuggestionViewSet
-# from teams.views import TeamViewSet, TeamMembershipViewSet, ChallengeViewSet
-# from leaderboards.views import LeaderboardViewSet, LeaderboardEntryViewSet, AchievementViewSet
+# Import viewsets
+from users.views import UserViewSet, UserProfileViewSet
+from activities.views import ActivityTypeViewSet, ActivityViewSet, WorkoutSuggestionViewSet
+from teams.views import TeamViewSet, TeamMembershipViewSet, ChallengeViewSet
+from leaderboards.views import LeaderboardViewSet, LeaderboardEntryViewSet, AchievementViewSet, UserAchievementViewSet
 
 # Register viewsets with router
-# router.register(r'users', UserViewSet)
-# router.register(r'user-profiles', UserProfileViewSet)
-# router.register(r'activity-types', ActivityTypeViewSet)
-# router.register(r'activities', ActivityViewSet)
-# router.register(r'workout-suggestions', WorkoutSuggestionViewSet)
-# router.register(r'teams', TeamViewSet)
-# router.register(r'team-memberships', TeamMembershipViewSet)
-# router.register(r'challenges', ChallengeViewSet)
-# router.register(r'leaderboards', LeaderboardViewSet)
-# router.register(r'leaderboard-entries', LeaderboardEntryViewSet)
-# router.register(r'achievements', AchievementViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'user-profiles', UserProfileViewSet)
+router.register(r'activity-types', ActivityTypeViewSet)
+router.register(r'activities', ActivityViewSet)
+router.register(r'workout-suggestions', WorkoutSuggestionViewSet)
+router.register(r'teams', TeamViewSet)
+router.register(r'team-memberships', TeamMembershipViewSet)
+router.register(r'challenges', ChallengeViewSet)
+router.register(r'leaderboards', LeaderboardViewSet)
+router.register(r'leaderboard-entries', LeaderboardEntryViewSet)
+router.register(r'achievements', AchievementViewSet)
+router.register(r'user-achievements', UserAchievementViewSet)
 
 @api_view(['GET'])
 def api_root(request, format=None):
