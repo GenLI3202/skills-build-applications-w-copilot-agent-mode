@@ -9,7 +9,7 @@ const Leaderboard = () => {
     ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev`
     : 'http://localhost:8000';
   
-  const API_ENDPOINT = `${API_BASE_URL}/api/leaderboards/`;
+  const API_ENDPOINT = `${API_BASE_URL}/api/leaderboard/`;
 
   useEffect(() => {
     const fetchLeaderboard = async () => {

@@ -103,11 +103,21 @@ const Workouts = () => {
                     <tr key={workout.id || index}>
                       <th scope="row">{index + 1}</th>
                       <td>
-                        <div>
-                          <strong className="d-block">{workout.name || workout.title || 'Untitled Workout'}</strong>
-                          <small className="text-muted">
-                            ID: {workout.id || index}
-                          </small>
+                        <div className="d-flex align-items-center">
+                          <div className="bg-danger rounded-circle d-flex align-items-center justify-content-center me-3"
+                               style={{width: '40px', height: '40px'}}>
+                            <span className="text-white fw-bold">
+                              {(workout.name || workout.title || 'W')[0].toUpperCase()}
+                            </span>
+                          </div>
+                          <div>
+                            <strong className="d-block">
+                              {workout.name || workout.title || 'Untitled Workout'}
+                            </strong>
+                            <small className="text-muted">
+                              ID: {workout.id || index}
+                            </small>
+                          </div>
                         </div>
                       </td>
                       <td>
@@ -135,8 +145,7 @@ const Workouts = () => {
                         </span>
                       </td>
                       <td>
-                        <span className="text-truncate d-inline-block" style={{maxWidth: '120px'}} 
-                              title={workout.equipment_needed}>
+                        <span className="text-truncate d-inline-block" style={{maxWidth: '150px'}} title={workout.equipment_needed}>
                           {workout.equipment_needed || 'None'}
                         </span>
                       </td>
@@ -151,13 +160,13 @@ const Workouts = () => {
                       </td>
                       <td className="text-center">
                         <div className="btn-group btn-group-sm">
-                          <button className="btn btn-outline-danger btn-sm" title="View Workout">
+                          <button className="btn btn-outline-danger btn-sm" title="View Details">
                             <i className="fas fa-eye"></i>
                           </button>
                           <button className="btn btn-outline-primary btn-sm" title="Edit Workout">
                             <i className="fas fa-edit"></i>
                           </button>
-                          <button className="btn btn-outline-danger btn-sm" title="Delete Workout">
+                          <button className="btn btn-outline-secondary btn-sm" title="Delete Workout">
                             <i className="fas fa-trash"></i>
                           </button>
                         </div>
