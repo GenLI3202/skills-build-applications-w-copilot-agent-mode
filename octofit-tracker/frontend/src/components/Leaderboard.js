@@ -15,19 +15,17 @@ const Leaderboard = () => {
     const fetchLeaderboard = async () => {
       try {
         console.log('Fetching leaderboard from:', API_ENDPOINT);
-        const response = await fetch(API_ENDPOINT);
-        
+        const response = await fetch(API_ENDPOINT, {
+          credentials: 'include',
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
         const data = await response.json();
         console.log('Leaderboard API response:', data);
-        
         // Handle both paginated (.results) and plain array responses
         const leaderboardData = data.results || data;
         console.log('Processed leaderboard data:', leaderboardData);
-        
         setLeaderboard(leaderboardData);
         setLoading(false);
       } catch (error) {
@@ -36,7 +34,6 @@ const Leaderboard = () => {
         setLoading(false);
       }
     };
-
     fetchLeaderboard();
   }, [API_ENDPOINT]);
 

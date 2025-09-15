@@ -15,19 +15,17 @@ const Workouts = () => {
     const fetchWorkouts = async () => {
       try {
         console.log('Fetching workouts from:', API_ENDPOINT);
-        const response = await fetch(API_ENDPOINT);
-        
+        const response = await fetch(API_ENDPOINT, {
+          credentials: 'include',
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
         const data = await response.json();
         console.log('Workouts API response:', data);
-        
         // Handle both paginated (.results) and plain array responses
         const workoutsData = data.results || data;
         console.log('Processed workouts data:', workoutsData);
-        
         setWorkouts(workoutsData);
         setLoading(false);
       } catch (error) {
@@ -36,7 +34,6 @@ const Workouts = () => {
         setLoading(false);
       }
     };
-
     fetchWorkouts();
   }, [API_ENDPOINT]);
 

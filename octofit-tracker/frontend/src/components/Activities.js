@@ -15,19 +15,17 @@ const Activities = () => {
     const fetchActivities = async () => {
       try {
         console.log('Fetching activities from:', API_ENDPOINT);
-        const response = await fetch(API_ENDPOINT);
-        
+        const response = await fetch(API_ENDPOINT, {
+          credentials: 'include',
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
         const data = await response.json();
         console.log('Activities API response:', data);
-        
         // Handle both paginated (.results) and plain array responses
         const activitiesData = data.results || data;
         console.log('Processed activities data:', activitiesData);
-        
         setActivities(activitiesData);
         setLoading(false);
       } catch (error) {
@@ -36,7 +34,6 @@ const Activities = () => {
         setLoading(false);
       }
     };
-
     fetchActivities();
   }, [API_ENDPOINT]);
 

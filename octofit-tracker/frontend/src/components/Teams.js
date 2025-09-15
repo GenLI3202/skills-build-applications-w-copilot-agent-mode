@@ -15,19 +15,17 @@ const Teams = () => {
     const fetchTeams = async () => {
       try {
         console.log('Fetching teams from:', API_ENDPOINT);
-        const response = await fetch(API_ENDPOINT);
-        
+        const response = await fetch(API_ENDPOINT, {
+          credentials: 'include',
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
         const data = await response.json();
         console.log('Teams API response:', data);
-        
         // Handle both paginated (.results) and plain array responses
         const teamsData = data.results || data;
         console.log('Processed teams data:', teamsData);
-        
         setTeams(teamsData);
         setLoading(false);
       } catch (error) {
@@ -36,7 +34,6 @@ const Teams = () => {
         setLoading(false);
       }
     };
-
     fetchTeams();
   }, [API_ENDPOINT]);
 

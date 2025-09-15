@@ -15,19 +15,17 @@ const Users = () => {
     const fetchUsers = async () => {
       try {
         console.log('Fetching users from:', API_ENDPOINT);
-        const response = await fetch(API_ENDPOINT);
-        
+        const response = await fetch(API_ENDPOINT, {
+          credentials: 'include',
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
         const data = await response.json();
         console.log('Users API response:', data);
-        
         // Handle both paginated (.results) and plain array responses
         const usersData = data.results || data;
         console.log('Processed users data:', usersData);
-        
         setUsers(usersData);
         setLoading(false);
       } catch (error) {
@@ -36,7 +34,6 @@ const Users = () => {
         setLoading(false);
       }
     };
-
     fetchUsers();
   }, [API_ENDPOINT]);
 
