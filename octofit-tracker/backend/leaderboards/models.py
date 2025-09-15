@@ -41,7 +41,7 @@ class Leaderboard(djongo_models.Model):
 class LeaderboardEntry(djongo_models.Model):
     """Individual entries in leaderboards"""
     _id = djongo_models.ObjectIdField()
-    leaderboard_id = djongo_models.ObjectIdField()
+    leaderboard_id = models.CharField(max_length=24)
     participant_id = models.IntegerField()  # Can be user_id or team_id
     participant_type = models.CharField(
         max_length=20,
@@ -92,7 +92,7 @@ class UserAchievement(djongo_models.Model):
     """Track user achievements"""
     _id = djongo_models.ObjectIdField()
     user_id = models.IntegerField()
-    achievement_id = djongo_models.ObjectIdField()
+    achievement_id = models.CharField(max_length=24)
     earned_at = models.DateTimeField(auto_now_add=True)
     progress_data = djongo_models.JSONField(default=dict)
     

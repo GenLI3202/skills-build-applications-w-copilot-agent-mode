@@ -27,8 +27,8 @@ class Team(djongo_models.Model):
 
 class TeamMembership(djongo_models.Model):
     """Team membership tracking"""
-    _id = djongo_models.ObjectIdField()
-    team_id = djongo_models.ObjectIdField()
+    _id = djongo_models.ObjectIdField(primary_key=True)
+    team_id = models.CharField(max_length=24)
     user_id = models.IntegerField()
     role = models.CharField(
         max_length=20,
